@@ -1,18 +1,17 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Iinclude
+CFLAGS = -Iinclude
 
-calculator: main.o calculator.o logger.o
-	# TODO: link object files into the calculator executable
+calculator: src/main.o src/calculator.o src/logger.o
+	$(CC) $(CFLAGS) src/main.o src/calculator.o src/logger.o -o calculator
 
-main.o: src/main.c include/calculator.h include/logger.h
-	# TODO: compile src/main.c
+src/main.o: src/main.c
+	$(CC) $(CFLAGS) -c src/main.c -o src/main.o
 
-calculator.o: src/calculator.c include/calculator.h
-	# TODO: compile src/calculator.c
+src/calculator.o: src/calculator.c
+	$(CC) $(CFLAGS) -c src/calculator.c -o src/calculator.o
 
-logger.o: src/logger.c include/logger.h
-	# TODO: compile src/logger.c
+src/logger.o: src/logger.c
+	$(CC) $(CFLAGS) -c src/logger.c -o src/logger.o
 
-.PHONY: clean
 clean:
-	# TODO: remove calculator and all .o files
+	rm -f src/*.o calculator

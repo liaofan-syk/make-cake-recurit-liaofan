@@ -1,8 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
-
+cmake_minimum_required(VERSION 3.10)
 project(calculator LANGUAGES C)
-
-# TODO: create an executable target named calculator
-# Hint: sources are in src/main.c and src/calculator.c
-
-# TODO: add the include directory for the calculator target
+include_directories(include)
+add_executable(calculator src/main.c src/calculator.c)
